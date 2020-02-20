@@ -20,15 +20,30 @@ export class EditorComponent implements OnInit, OnDestroy {
     window.addEventListener("scroll", this.scrollEvent, true);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     window.removeEventListener("scroll", this.scrollEvent, true);
   }
 
-  scrollEvent = (event: any): void => {
-    this.scrollTop = event.srcElement.scrollTop;
+  scrollEvent = ({ srcElement: { scrollTop } }: any): void => {
+    this.scrollTop = scrollTop;
   };
 
-  renderMarkdown() {
+  copyMarkdownToClipboard($element: HTMLTextAreaElement): void {
+    $element.select();
+    document.execCommand("copy");
+    $element.setSelectionRange(0, 0);
+  }
+
+  copyHtmlToClipboard(): void {
+    const $el = document.createElement("textarea");
+    $el.value = this.renderMarkdown();
+    document.body.appendChild($el);
+    $el.select();
+    document.execCommand("copy");
+    $el.remove();
+  }
+
+  renderMarkdown(): string {
     return marked(sanitize(this.content), { gfm: true });
   }
 }
