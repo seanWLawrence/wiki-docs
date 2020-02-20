@@ -1,0 +1,8 @@
+<div>
+  <label>Content:
+    <textarea [(ngModel)]="content" placeholder="Write some
+    content..."></textarea>
+  </label>
+</div>
+
+<div [innerHTML]="renderMarkdown()"></div>
