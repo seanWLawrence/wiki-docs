@@ -4,12 +4,17 @@
     <textarea
       [(ngModel)]="content"
       class="editor"
+      [scrollTop]="scrollTop"
     >
     </textarea>
   </div>
 
-  <div class="editorWrapper">
+  <div class="markdownWrapper">
     <label class="editorLabel">HTML</label>
-    <div [innerHTML]="renderMarkdown()" class="markdown"></div>
+    <div
+      [innerHTML]="renderMarkdown()"
+      class="markdown"
+      [scrollTop]="scrollTop"
+    ></div>
   </div>
 </div>

@@ -1,7 +1,8 @@
 .pageWrapper
   display: flex
+  justify-content: center
 
-.editorWrapper
+.editorWrapper, .markdownWrapper
   display: flex
   flex-direction: column
   margin: 1rem
@@ -9,15 +10,16 @@
 .editorLabel
   margin-bottom: 1rem
 
-.editor
-  height: 50vh
-  width: 50vw
+.editor, .markdown
+  height: 80vh
+  width: 45vw
   font-size: 1rem
   background-color: lighten(#171717, 5%)
   padding: 1rem
   border-radius: .5rem
   border: 0
   color: #eee
+  overflow-y: scroll
 
   &:focus
     outline: 0
