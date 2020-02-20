@@ -8,11 +8,13 @@ import { sanitize } from "dompurify";
   styleUrls: ["./editor.component.sass"]
 })
 export class EditorComponent implements OnInit {
-  content = "Some content";
+  content = "";
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.content = window.localStorage.getItem("content") || "Some content...";
+  }
 
   renderMarkdown() {
     return marked(sanitize(this.content), { gfm: true });

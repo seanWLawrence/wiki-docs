@@ -1,8 +1,15 @@
-<div>
-  <label>Content:
-    <textarea [(ngModel)]="content" placeholder="Write some
-    content..."></textarea>
-  </label>
-</div>
+<div class="pageWrapper">
+  <div class="editorWrapper">
+    <label class="editorLabel">Markdown</label>
+    <textarea
+      [(ngModel)]="content"
+      class="editor"
+    >
+    </textarea>
+  </div>
 
-<div [innerHTML]="renderMarkdown()"></div>
+  <div class="editorWrapper">
+    <label class="editorLabel">HTML</label>
+    <div [innerHTML]="renderMarkdown()" class="markdown"></div>
+  </div>
+</div>
